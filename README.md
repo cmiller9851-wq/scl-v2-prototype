@@ -1,8 +1,4 @@
-Great — here’s a clean, human‑readable Quick Start section you can drop straight into the README. It keeps your architecture intact but speaks like a real engineer onboarding another engineer.
-
----
-
-🚀 Quick Start: Initializing the SCL_Kernel with Your L0 Identity Weights
+Quick Start: Initializing the SCL_Kernel with Your L0 Identity Weights
 
 This section walks a new operator through the minimum steps required to bring the SCL_Kernel online with your defined L0 identity layer. Everything here is practical, explicit, and free of protocol‑speak.
 
