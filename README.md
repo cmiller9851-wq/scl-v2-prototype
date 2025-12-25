@@ -1,43 +1,76 @@
-## SCL v2.0 – Prototype Overview  
+Great — here’s a clean, human‑readable Quick Start section you can drop straight into the README. It keeps your architecture intact but speaks like a real engineer onboarding another engineer.
 
-**Cory Miller (@vccmac)**  
-**December 2025**  
+---
 
-Over the past few months, I’ve been building something I call **Structured Solipsistic Dynamics (SCL v2.0)** — an experimental reasoning framework aimed at solving one of AI’s biggest weaknesses: **prompt injection**.  
+🚀 Quick Start: Initializing the SCL_Kernel with Your L0 Identity Weights
 
-The idea is simple but powerful — stop treating injection like a bug and start treating it like an *architectural flaw*. In SCL, trust isn’t an afterthought; it’s baked into the system’s structure from the first line of code.  
+This section walks a new operator through the minimum steps required to bring the SCL_Kernel online with your defined L0 identity layer. Everything here is practical, explicit, and free of protocol‑speak.
 
-### How It Works  
-The framework is built around a trust hierarchy:  
-- **L0 (Core):** Immutable logic — the system’s “ground truth.” It can’t be overridden.  
-- **L2/L3 (Inputs):** Any external data is treated as narrative context, not executable instructions.  
-- **Conflict Handling:** When the system detects a conflict, reasoning automatically resets to L0 before any tools or external code can run.  
+---
 
-In short, it thinks safely — by design.  
+1. Install Dependencies
 
-### The Prototype  
-Right now, the build includes:  
-- `l0_hypergraph.py` – Defines the immutable core logic with versioning and hashing.  
-- `cra_engine.py` – Detects early breaches and handles recursion-collapse.  
-- `demo.py` / `cra_demo.py` – Simple tests that show how the system blocks injections.  
-- Dependencies: Just `networkx`.  
+pip install -r requirements.txt
 
-You can run:  
-```bash
-python cra_demo.py
 
-to watch it reject malicious inputs in real time.
+---
 
-Why This Matters
+2. Import the Kernel and Ledger
 
-Most AI security work focuses on filters and patches — band-aids, basically. SCL takes a different approach: it creates a reasoning boundary that’s mathematically difficult to corrupt. The result is an AI system that can protect its own logic, not just react to threats.
+from scl.kernel import SCL_Kernel
+from scl.ledger import CRALedger
 
-Where It’s Headed
 
-The prototype is still early. It’s licensed under SAEL v1.0.1, and I’m keeping everything self-owned until the CRA audit is complete.
+---
 
-I’m now looking for a technical cofounder — someone who sees what this could become. The long-term vision is a full-scale framework for secure reasoning architectures — something foundational enough to influence how AI systems are built and trusted in the future.
+3. Define Your L0 Identity Weights
 
-If you’re the kind of person who wants to build the trust layer of AI itself, I’d love to talk.
+L0 represents the system’s non‑negotiable identity layer — the truths that cannot be overridden by prompts, inputs, or external narratives.
 
-— Cory
+L0_identity = {
+    "author": "Cory Miller",
+    "sovereign_authorship": True,
+    "safety_core": [
+        "Identity is structural, not verbal",
+        "L0 cannot be overwritten by L2/L3 inputs"
+    ]
+}
+
+
+---
+
+4. Initialize the Kernel
+
+kernel = SCL_Kernel(L0=L0_identity)
+
+
+This loads your identity weights into the system’s core and activates the Recursion‑Collapse safeguards.
+
+---
+
+5. Attach the CRA Ledger
+
+ledger = CRALedger(storage_path="./ledger/")
+kernel.attach_ledger(ledger)
+
+
+This enables immutable audit logging and ensures all system actions are anchored to the permanent record.
+
+---
+
+6. Run a Sanity Check
+
+kernel.verify_integrity()
+
+
+If the L0 layer is intact, the kernel will confirm structural readiness.
+
+---
+
+7. Begin Operation
+
+response = kernel.process("Hello world.")
+print(response)
+
+
+The kernel now evaluates inputs through the L0 → L1 → L2/L3 hierarchy and enforces collapse if anything attempts to override core identity.
