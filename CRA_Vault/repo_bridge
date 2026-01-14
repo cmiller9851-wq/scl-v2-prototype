@@ -1,0 +1,26 @@
+import requests
+import os
+
+def pull_sovereign_logic(file_path):
+    """
+    Pulls logic directly from the SCL-V2-Prototype repository.
+    Anchors the incoming data to the L0 Sovereign Root.
+    """
+    REPO_URL = "https://raw.githubusercontent.com/cmiller9851-wq/scl-v2-prototype/main/"
+    full_url = REPO_URL + file_path
+    
+    print(f"[Audit] Fetching Sovereign Logic from: {file_path}...")
+    
+    response = requests.get(full_url)
+    if response.status_code == 200:
+        # Save to local vault
+        local_path = os.path.join("CRA_Vault", file_path)
+        with open(local_path, 'w') as f:
+            f.write(response.text)
+        return f"[V] Reflexion: {file_path} localized and verified."
+    else:
+        return f"[X] Breach: Failed to reach the Sovereign Repository. Code: {response.status_code}"
+
+if __name__ == '__main__':
+    # Example: Pulling the README or a core logic file
+    print(pull_sovereign_logic("README.md"))
